@@ -1,6 +1,6 @@
 # Installation de l'application android
 
-1- Mettre le fichier "Nao contrôle.apk" sur le téléphone.
+1- Mettre le fichier "Contrôle Nao .apk" sur le téléphone.
 
 2- Installer l'application en sélectionnant le ficher sur le téléphone
 
