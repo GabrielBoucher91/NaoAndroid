@@ -95,7 +95,8 @@
                 android:onClick="onTurnLeft"
                 android:minHeight="100dp"
                 android:minWidth="100dp"
-                android:layout_gravity="top|center_horizontal" />
+                android:layout_gravity="top|center_horizontal"
+                android:src="@mipmap/arrow_left" />
 
             <ImageButton
                 android:layout_width="fill_parent"
@@ -104,7 +105,8 @@
                 android:onClick="onGoToFront"
                 android:minHeight="100dp"
                 android:minWidth="100dp"
-                android:layout_gravity="top|center_horizontal" />
+                android:layout_gravity="top|center_horizontal"
+                android:src="@mipmap/arrow_straight" />
 
             <ImageButton
                 android:layout_width="fill_parent"
@@ -113,7 +115,9 @@
                 android:onClick="onTurnRight"
                 android:minHeight="100dp"
                 android:minWidth="100dp"
-                android:layout_gravity="top|center_horizontal" />
+                android:layout_gravity="top|center_horizontal"
+                android:src="@mipmap/arrow_left"
+                android:scaleX="-1"/>
         </TableRow>
 
         <TableRow
@@ -127,7 +131,9 @@
                 android:onClick="onGoToLeft"
                 android:minHeight="100dp"
                 android:minWidth="100dp"
-                android:layout_gravity="top|center_horizontal" />
+                android:layout_gravity="top|center_horizontal"
+                android:src="@mipmap/arrow_straight"
+                android:rotation="-90"/>
 
             <Button
                 android:layout_width="fill_parent"
@@ -146,7 +152,9 @@
                 android:onClick="onGoToRight"
                 android:minHeight="100dp"
                 android:minWidth="100dp"
-                android:layout_gravity="top|center_horizontal" />
+                android:layout_gravity="top|center_horizontal"
+                android:src="@mipmap/arrow_straight"
+                android:rotation="90"/>
         </TableRow>
 
         <TableRow
@@ -170,7 +178,9 @@
                 android:onClick="onGoToBack"
                 android:minHeight="100dp"
                 android:minWidth="100dp"
-                android:layout_gravity="top|center_horizontal" />
+                android:layout_gravity="top|center_horizontal"
+                android:src="@mipmap/arrow_straight"
+                android:rotation="180"/>
 
             <Button
                 android:layout_width="fill_parent"
