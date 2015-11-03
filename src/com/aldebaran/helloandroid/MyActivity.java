@@ -175,7 +175,9 @@ public class MyActivity extends Activity {
         view.setKeepScreenOn(false);
         running=false;
         Thread.sleep(150);
-        session.close();
+        if (session != null) {
+            session.close();
+        }
         finish();
         System.exit(0);
     }
@@ -210,7 +212,7 @@ public class MyActivity extends Activity {
             TextView myTextView = (TextView) findViewById(R.id.statustext);
             myTextView.setText("CONNECTE : END");
             alPosture.goToPosture("Stand", 0.5f);
-            String messageToDisplay = "^mode(contextual) \\rspd=85\\Il faut remercier le Theatrre de La Border et l'organisation des Matins Craiatifs, et surtout le laboratoire de robotique pour me permettre d'aitrre ici ! Bon spectacle ! ^start(animations/Stand/Gestures/Salute_1) Au revoir ! ^wait(animations/Stand/Gestures/Salute_1)";
+            String messageToDisplay = "^mode(contextual) \\rspd=85\\Je vous remercie de votre attention. ^start(animations/Stand/Gestures/Salute_1) Au revoir ! ^wait(animations/Stand/Gestures/Salute_1)";
             alSpeech.setVolume(0.75f);
             alAnSpeech.say(messageToDisplay);
             startTime = System.nanoTime()/100000;
@@ -350,9 +352,6 @@ public class MyActivity extends Activity {
 
     public void onSit(View view) throws InterruptedException, CallError {
         if(running) {
-            String messageToDisplay = "\\rspd=65\\^start(animations/Stand/Emotions/Negative/Bored_1) Bon... d'accord... ^wait(animations/Stand/Emotions/Negative/Bored_1)";
-            alSpeech.setVolume(1f);
-            alAnSpeech.say(messageToDisplay);
             alPosture.goToPosture("Sit", 0.5f);
             startTime = System.nanoTime()/100000;
         }

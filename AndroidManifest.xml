@@ -6,12 +6,12 @@
 
     <uses-sdk android:minSdkVersion="15"/>
     <application
-        android:label="NaoAndroid_Conf"
-        android:icon="@drawable/ic_launcher"
-        android:debuggable="true">
+        android:label="Contrôle Nao"
+        android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MyActivity"
-            android:label="NaoAndroid_Conf">
+            android:label="Contrôle Nao"
+            android:theme="@android:style/Theme.DeviceDefault.Light">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
@@ -20,18 +20,11 @@
         <activity
             android:name=".VideoActivity"
             android:label="NaoAndroid_Conf">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-                <category android:name="android.intent.category.LAUNCHER"/>
-            </intent-filter>
         </activity>
         <activity
             android:name=".ConfActivity"
             android:label="NaoAndroid_Conf">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-                <category android:name="android.intent.category.LAUNCHER"/>
-            </intent-filter>
+
         </activity>
         <!--<activity android:name=".MyActivity" >-->
         <!--</activity>-->

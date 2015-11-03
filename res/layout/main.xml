@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:orientation="vertical"
-              android:keepScreenOn="true"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:keepScreenOn="true"
+              android:layout_width="fill_parent"
+              android:layout_height="fill_parent"
+    android:nestedScrollingEnabled="false"
+    android:scrollIndicators="right"
+    android:orientation="vertical"
+    tools:context=".MyActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -65,88 +69,152 @@
             android:text="Bye"
             android:onClick="onBye"/>
         <Button
-            android:layout_width="120px"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Y"
             android:onClick="onYou"/>
     </LinearLayout>
 
-    <GridLayout
-        android:layout_width="wrap_content"
-        android:columnCount="3"
-        android:layout_marginTop="20dp"
-        android:rowCount="3"
-        android:layout_gravity="center"
-        android:layout_height="wrap_content">
-        <ImageButton
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:scaleType="fitXY"
-            android:onClick="onTurnLeft"/>
-        <ImageButton
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:scaleType="fitXY"
-            android:onClick="onGoToFront"/>
-        <ImageButton
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:scaleType="fitXY"
-            android:onClick="onTurnRight"/>
-        <ImageButton
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:scaleType="fitXY"
-            android:onClick="onGoToLeft"/>
-        <Button
-            android:layout_width="100dp"
-            android:scaleType="fitXY"
-            android:onClick="onStop"
-            android:text="STOP!"
-            android:layout_height="100dp"/>
-        <ImageButton
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:scaleType="fitXY"
-            android:onClick="onGoToRight"/>
-        <Button
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:scaleType="fitXY"
-            android:text="CONF"
-            android:onClick="onConf"/>
-        <ImageButton
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:scaleType="fitXY"
-            android:onClick="onGoToBack"/>
-        <Button
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:scaleType="fitXY"
-            android:text="VIDEO"
-            android:onClick="onVideo"/>
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:measureWithLargestChild="false"
+        android:layout_weight="10"
+        android:scrollIndicators="right">
 
-    </GridLayout>
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="top|center_horizontal">
+
+            <ImageButton
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:scaleType="fitXY"
+                android:onClick="onTurnLeft"
+                android:minHeight="100dp"
+                android:minWidth="100dp"
+                android:layout_gravity="top|center_horizontal"
+                android:src="@mipmap/arrow_left" />
+
+            <ImageButton
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:scaleType="fitXY"
+                android:onClick="onGoToFront"
+                android:minHeight="100dp"
+                android:minWidth="100dp"
+                android:layout_gravity="top|center_horizontal"
+                android:src="@mipmap/arrow_straight" />
+
+            <ImageButton
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:scaleType="fitXY"
+                android:onClick="onTurnRight"
+                android:minHeight="100dp"
+                android:minWidth="100dp"
+                android:layout_gravity="top|center_horizontal"
+                android:src="@mipmap/arrow_left"
+                android:scaleX="-1"/>
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageButton
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:scaleType="fitXY"
+                android:onClick="onGoToLeft"
+                android:minHeight="100dp"
+                android:minWidth="100dp"
+                android:layout_gravity="top|center_horizontal"
+                android:src="@mipmap/arrow_straight"
+                android:rotation="-90"/>
+
+            <Button
+                android:layout_width="fill_parent"
+                android:scaleType="fitXY"
+                android:onClick="onStop"
+                android:text="STOP!"
+                android:layout_height="fill_parent"
+                android:minHeight="100dp"
+                android:minWidth="100dp"
+                android:layout_gravity="top|center_horizontal" />
+
+            <ImageButton
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:scaleType="fitXY"
+                android:onClick="onGoToRight"
+                android:minHeight="100dp"
+                android:minWidth="100dp"
+                android:layout_gravity="top|center_horizontal"
+                android:src="@mipmap/arrow_straight"
+                android:rotation="90"/>
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <Button
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:scaleType="fitXY"
+                android:text="CONF"
+                android:onClick="onConf"
+                android:minHeight="100dp"
+                android:minWidth="100dp"
+                android:layout_gravity="top|center_horizontal" />
+
+            <ImageButton
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:scaleType="fitXY"
+                android:onClick="onGoToBack"
+                android:minHeight="100dp"
+                android:minWidth="100dp"
+                android:layout_gravity="top|center_horizontal"
+                android:src="@mipmap/arrow_straight"
+                android:rotation="180"/>
+
+            <Button
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:scaleType="fitXY"
+                android:text="VIDEO"
+                android:onClick="onVideo"
+                android:minHeight="100dp"
+                android:minWidth="100dp"
+                android:layout_gravity="top|center_horizontal" />
+        </TableRow>
+    </TableLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:orientation="horizontal"
-        android:weightSum="3"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|center_horizontal">
         <TextView
-            android:layout_width="600px"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:padding="8dp"
             android:id="@+id/statustext"
-            android:text="OFFLINE" />
+            android:text="OFFLINE"
+            android:layout_weight="5" />
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Quit"
-            android:onClick="onQuit"/>
+            android:onClick="onQuit"
+            android:layout_gravity="right"
+            android:layout_weight="0.1" />
     </LinearLayout>
 
 </LinearLayout>
