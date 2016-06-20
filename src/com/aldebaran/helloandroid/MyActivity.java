@@ -26,6 +26,7 @@ import com.aldebaran.qimessaging.helpers.al.ALRobotPosture;
 import com.aldebaran.qimessaging.helpers.al.ALTextToSpeech;
 
 import java.io.File;
+import java.io.InterruptedIOException;
 import java.net.InetAddress;
 import java.util.Locale;
 import java.util.Objects;
@@ -216,6 +217,52 @@ public class MyActivity extends Activity {
             alSpeech.setVolume(0.75f);
             alAnSpeech.say(messageToDisplay);
             startTime = System.nanoTime()/100000;
+        }
+    }
+
+    public void onIci(View view) throws InterruptedException, CallError {
+        if (running) {
+            startTime = System.nanoTime()/100000;
+            TextView myTextView = (TextView) findViewById(R.id.statustext);
+            myTextView.setText("CONNECTE : ICI!");
+            alPosture.goToPosture("Stand", 0.5f);
+            String messageToDisplay = "^mode(disabled) \\rspd=100\\Je suis ici, je suis ici !";
+            alSpeech.setVolume(0.75f);
+            alAnSpeech.say(messageToDisplay);
+            startTime = System.nanoTime()/100000;
+        }
+
+    }
+
+    public void onOffusque(View view) throws InterruptedException, CallError {
+        if (running) {
+            startTime = System.nanoTime()/100000;
+            TextView myTextView = (TextView) findViewById(R.id.statustext);
+            myTextView.setText("CONNECTE : OFFUSQUE");
+            alPosture.goToPosture("Stand",0.85f);
+            String messageToDisplay = "^mode(contextual) \\rspd=85\\Non !\\pau=250\\Je peux me présenter tout seul !\\pau=250\\Je m'appelle Nao. Je suis un robot humanoide bla bla bla";
+            alSpeech.setVolume(0.75f);
+            alAnSpeech.say(messageToDisplay);
+            startTime = System.nanoTime()/100000;
+        }
+    }
+
+    public void on1Arm(View view) throws InterruptedException, CallError {
+        if(running) {
+            //Function to lift one arm up, might use a pose.
+        }
+    }
+
+    public void onFakeout(View view) throws InterruptedException, CallError {
+        if (running) {
+            //Function to fake giving the card. Might use a different pose and laugh.
+            //Could also use animated text to do it.
+        }
+    }
+
+    public void on2Arms(View view) throws InterruptedException, CallError {
+        if (running) {
+            //Function to lift 2 arms up, might use a pose.
         }
     }
 
