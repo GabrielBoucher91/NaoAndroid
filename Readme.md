@@ -23,3 +23,4 @@ https://github.com/dastoqc/NaoAndroid
 
 6-Connecter le téléphone au réseau Nao diffusé par le Nao lorqu'il est allumé.
 Si le réseau n'apparait pas (attention le démarrage du Nao est très long!), brancher le Nao par cable réseau sur un ordinateur et télécharger le comportement 'tethering' par Choregraph. par le Nao lorqu'il est allumé. Si le réseau n'apparait pas (attention le démarrage du Nao est très long!), brancher le Nao par cable réseau sur un ordinateur et télécharger le comportement 'tethering' par Choregraph.
+
