@@ -66,19 +66,20 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Bye"
-            android:onClick="onBye"/>
+            android:text="Petit"
+            android:onClick="onPetit"/>
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="You"
-            android:onClick="onYou"/>
+            android:text="Fake"
+            android:onClick="onFakeout"/>
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="1 Arm"
-            android:id="@+id/button" />
+            android:text="REALITE"
+            android:id="@+id/button"
+            android:onClick="onRealite" />
     </LinearLayout>
 
     <TableLayout
@@ -161,6 +162,18 @@
                 android:layout_gravity="top|center_horizontal"
                 android:src="@mipmap/arrow_straight"
                 android:rotation="90"/>
+
+            <Button
+                android:layout_width="fill_parent"
+                android:scaleType="fitXY"
+                android:text="Tai-Chi"
+                android:layout_height="fill_parent"
+                android:minHeight="100dp"
+                android:minWidth="100dp"
+                android:layout_gravity="top|center_horizontal"
+                android:id="@+id/button10"
+                android:layout_column="3"
+                android:onClick="onTaichi" />
         </TableRow>
 
         <TableRow
@@ -198,6 +211,77 @@
                 android:minWidth="100dp"
                 android:layout_gravity="top|center_horizontal" />
         </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <Button
+                android:text="Presente"
+                android:id="@+id/button2"
+                android:layout_column="0"
+                android:onClick="onPresente" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Assoir"
+                android:id="@+id/button3"
+                android:layout_column="1"
+                android:onClick="onAssoir" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Dors"
+                android:id="@+id/button4"
+                android:layout_column="2"
+                android:onClick="onDors" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Rêve"
+                android:id="@+id/button5"
+                android:layout_column="3"
+                android:onClick="onReve" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <Button
+                android:text="Bailler"
+                android:id="@+id/button6"
+                android:layout_column="0"
+                android:onClick="onBailler" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Main"
+                android:id="@+id/button7"
+                android:layout_column="1"
+                android:onClick="onHand" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Merci"
+                android:id="@+id/button8"
+                android:layout_column="2"
+                android:onClick="onMerci" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Apprivoise"
+                android:id="@+id/button9"
+                android:layout_column="3"
+                android:onClick="onApprivoise" />
+        </TableRow>
+
     </TableLayout>
 
     <LinearLayout

@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.PowerManager;
+import android.telecom.Call;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
@@ -24,6 +25,8 @@ import com.aldebaran.qimessaging.helpers.al.ALMemory;
 import com.aldebaran.qimessaging.helpers.al.ALMotion;
 import com.aldebaran.qimessaging.helpers.al.ALRobotPosture;
 import com.aldebaran.qimessaging.helpers.al.ALTextToSpeech;
+
+import org.w3c.dom.Text;
 
 import java.io.File;
 import java.io.InterruptedIOException;
@@ -208,14 +211,13 @@ public class MyActivity extends Activity {
         }
     }
 
-    public void onBye(View view) throws InterruptedException, CallError {
+    public void onPetit(View view) throws InterruptedException, CallError {
         if(running) {
             TextView myTextView = (TextView) findViewById(R.id.statustext);
-            myTextView.setText("CONNECTE : END");
-            alPosture.goToPosture("Stand", 0.5f);
-            String messageToDisplay = "^mode(contextual) \\rspd=85\\Je vous remercie de votre attention. ^start(animations/Stand/Gestures/Salute_1) Au revoir ! ^wait(animations/Stand/Gestures/Salute_1)";
+            myTextView.setText("CONNECTE : PETIT");
+            String messageToDisplay = "\\rspd=85\\Désolé,\\pau=450\\ j'ai juste de petites pattes";
             alSpeech.setVolume(0.75f);
-            alAnSpeech.say(messageToDisplay);
+            alSpeech.say(messageToDisplay);
             startTime = System.nanoTime()/100000;
         }
     }
@@ -225,44 +227,223 @@ public class MyActivity extends Activity {
             startTime = System.nanoTime()/100000;
             TextView myTextView = (TextView) findViewById(R.id.statustext);
             myTextView.setText("CONNECTE : ICI!");
-            alPosture.goToPosture("Stand", 0.5f);
-            String messageToDisplay = "^mode(disabled) \\rspd=100\\Je suis ici, je suis ici !";
+            String messageToDisplay = "\\rspd=85\\J'arrive! J'arrive! \\pau=500\\Il n'y a pas le feu.";
             alSpeech.setVolume(0.75f);
-            alAnSpeech.say(messageToDisplay);
+            alSpeech.say(messageToDisplay);
             startTime = System.nanoTime()/100000;
         }
 
     }
 
-    public void onOffusque(View view) throws InterruptedException, CallError {
+    private int presente_toggle=0;
+
+    public void onPresente(View view) throws InterruptedException, CallError {
+        if (running) {
+            if (presente_toggle==0){
+                startTime = System.nanoTime()/100000;
+                TextView myTextView = (TextView) findViewById(R.id.statustext);
+                myTextView.setText("CONNECTE : PRESENTE 0");
+                alPosture.goToPosture("Stand",0.85f);
+                String messageToDisplay = "^mode(contextual) \\rspd=85\\Désolé,\\pau=250\\mais pourrais-je me présenter?";
+                alSpeech.setVolume(0.75f);
+                alAnSpeech.say(messageToDisplay);
+                startTime = System.nanoTime()/100000;
+                presente_toggle++;
+            }
+            else{
+                startTime = System.nanoTime()/100000;
+                TextView myTextView = (TextView) findViewById(R.id.statustext);
+                myTextView.setText("CONNECTE : PRESENTE 1");
+                alPosture.goToPosture("Stand",0.85f);
+                String messageToDisplay = "^mode(contextual) \\rspd=85\\Bonjour! Je m'appelle NAO. Je suis le meilleur robot au monde!\\pau=750\\ C'est mon programmeur qui dit ça!";
+                alSpeech.setVolume(0.75f);
+                alAnSpeech.say(messageToDisplay);
+                startTime = System.nanoTime()/100000;
+                presente_toggle=0;
+            }
+
+        }
+    }
+
+    public void onAssoir(View view) throws InterruptedException, CallError {
+        if (running) {
+            startTime = System.nanoTime() / 100000;
+            TextView myTextView = (TextView) findViewById(R.id.statustext);
+            myTextView.setText("CONNECTE : ASSOIR");
+            alPosture.goToPosture("Stand", 0.85f);
+            String messageToDisplay = "^mode(contextual) \\rspd=85\\Je peux m'assoir.";
+            alSpeech.setVolume(0.75f);
+            alAnSpeech.say(messageToDisplay);
+            startTime = System.nanoTime() / 100000;
+        }
+    }
+
+    private int taichi_Toggle=0;
+
+    public void onTaichi(View view) throws  InterruptedException, CallError {
+        if (running) {
+            if (taichi_Toggle==0){
+                startTime = System.nanoTime()/100000;
+                TextView myTextView = (TextView) findViewById(R.id.statustext);
+                myTextView.setText("CONNECTE : TAICHI 1");
+                String messageToDisplay = "\\rspd=85\\Je pourrais faire du Taille-Chi, mais mes batteries sont trop faibles. Il faut que je me repose un peu";
+                alSpeech.setVolume(0.75f);
+                alSpeech.say(messageToDisplay);
+                startTime = System.nanoTime()/100000;
+                taichi_Toggle++;
+            }
+            else if (taichi_Toggle==1){
+                startTime = System.nanoTime()/100000;
+                TextView myTextView = (TextView) findViewById(R.id.statustext);
+                myTextView.setText("CONNECTE : TAICHI 2");
+                String messageToDisplay = "\\rspd=85\\Maintenant que je suis reposé, est-ce que je peux faire ma démonstration de taï-chi?";
+                alSpeech.setVolume(0.75f);
+                alSpeech.say(messageToDisplay);
+                startTime = System.nanoTime()/100000;
+                taichi_Toggle++;
+            }
+            else{
+                startTime = System.nanoTime()/100000;
+                TextView myTextView = (TextView) findViewById(R.id.statustext);
+                myTextView.setText("CONNECTE : TAICHI 3");
+                String messageToDisplay = "\\rspd=85\\Super!";
+                alSpeech.setVolume(0.75f);
+                alSpeech.say(messageToDisplay);
+                startTime = System.nanoTime()/100000;
+                taichi_Toggle=0;
+            }
+        }
+    }
+
+    public void onDors(View view) throws  InterruptedException, CallError {
         if (running) {
             startTime = System.nanoTime()/100000;
             TextView myTextView = (TextView) findViewById(R.id.statustext);
-            myTextView.setText("CONNECTE : OFFUSQUE");
-            alPosture.goToPosture("Stand",0.85f);
-            String messageToDisplay = "^mode(contextual) \\rspd=85\\Non !\\pau=250\\Je peux me présenter tout seul !\\pau=250\\Je m'appelle Nao. Je suis un robot humanoide bla bla bla";
+            myTextView.setText("CONNECTE : DORS");
+            String messageToDisplay = "\\rspd=75\\Fermez les lumières, je veux dormir.";
             alSpeech.setVolume(0.75f);
+            alSpeech.say(messageToDisplay);
+            startTime = System.nanoTime()/100000;
+        }
+    }
+
+    public void onRealite(View view) throws InterruptedException, CallError {
+        if (running) {
+            startTime = System.nanoTime()/100000;
+            TextView myTextView = (TextView) findViewById(R.id.statustext);
+            myTextView.setText("CONNECTE : REVE");
+            String messageToDisplay = "\\rspd=75\\ Moi j'adore ça la réalité!.";
+            alSpeech.setVolume(0.65f);
+            alSpeech.say(messageToDisplay);
+            startTime = System.nanoTime()/100000;
+        }
+    }
+
+    public void onReve(View view) throws InterruptedException, CallError {
+        if (running) {
+            startTime = System.nanoTime()/100000;
+            TextView myTextView = (TextView) findViewById(R.id.statustext);
+            myTextView.setText("CONNECTE : REVE");
+            String messageToDisplay = "\\rspd=75\\ Je pense que j'ai dormi un peu et j'ai fait un beau rêve.";
+            alSpeech.setVolume(0.65f);
+            alSpeech.say(messageToDisplay);
+            startTime = System.nanoTime()/100000;
+        }
+    }
+
+    public void onBailler(View view) throws InterruptedException, CallError {
+        if (running) {
+            startTime = System.nanoTime()/100000;
+            TextView myTextView = (TextView) findViewById(R.id.statustext);
+            myTextView.setText("CONNECTE : BAILLER");
+            alPosture.goToPosture("Stand",0.85f);
+            String messageToDisplay = "^mode(disabled) \\rspd=85\\^run(animations/Stand/Gestures/ShowSky_8)";
             alAnSpeech.say(messageToDisplay);
+        }
+    }
+
+    public void onApprivoise(View view) throws InterruptedException, CallError {
+        if (running) {
+            startTime = System.nanoTime()/100000;
+            TextView myTextView = (TextView) findViewById(R.id.statustext);
+            myTextView.setText("CONNECTE : APPRIVOISE");
+            String messageToDisplay = "\\rspd=75\\ Je crois qu'elle m'a apprivoisé";
+            alSpeech.setVolume(0.65f);
+            alSpeech.say(messageToDisplay);
             startTime = System.nanoTime()/100000;
         }
     }
 
     public void on1Arm(View view) throws InterruptedException, CallError {
         if(running) {
-            //Function to lift one arm up, might use a pose.
+            TextView myTextView = (TextView) findViewById(R.id.statustext);
+            myTextView.setText("CONNECTE : 1 ARM");
+            alMotion.setStiffnesses("RArm",0.5f);
+            alMotion.angleInterpolationWithSpeed("RShoulderPitch",-1.95,0.20f);
+            startTime = System.nanoTime()/100000;
         }
     }
 
+    private int fake_Toggle=0;
+
     public void onFakeout(View view) throws InterruptedException, CallError {
         if (running) {
-            //Function to fake giving the card. Might use a different pose and laugh.
-            //Could also use animated text to do it.
+            if (fake_Toggle==0){
+                startTime = System.nanoTime()/100000;
+                TextView myTextView = (TextView) findViewById(R.id.statustext);
+                myTextView.setText("CONNECTE : FAKEOUT 1");
+                String messageToDisplay = "\\rspd=90\\ Haha!";
+                alSpeech.setVolume(0.65f);
+                alSpeech.say(messageToDisplay);
+                startTime = System.nanoTime()/100000;
+                fake_Toggle++;
+            }
+            else{
+                startTime = System.nanoTime()/100000;
+                TextView myTextView = (TextView) findViewById(R.id.statustext);
+                myTextView.setText("CONNECTE : FAKEOUT 2");
+                String messageToDisplay = "\\rspd=75\\ Mon bras s'est emballé!";
+                alSpeech.setVolume(0.65f);
+                alSpeech.say(messageToDisplay);
+                startTime = System.nanoTime()/100000;
+                fake_Toggle=0;
+            }
+        }
+    }
+
+    private int merci_Toggle=0;
+
+    public void onMerci(View view) throws InterruptedException, CallError {
+        if (running) {
+            if (merci_Toggle==0){
+                startTime = System.nanoTime()/100000;
+                TextView myTextView = (TextView) findViewById(R.id.statustext);
+                myTextView.setText("CONNECTE : MERCI 1");
+                String messageToDisplay = "\\rspd=80\\ C'est un beau compliment!\\pau=250\\Merci!";
+                alSpeech.setVolume(0.65f);
+                alSpeech.say(messageToDisplay);
+                startTime = System.nanoTime()/100000;
+                merci_Toggle++;
+            }
+            else{
+                startTime = System.nanoTime()/100000;
+                TextView myTextView = (TextView) findViewById(R.id.statustext);
+                myTextView.setText("CONNECTE : MERCI 2");
+                String messageToDisplay = "\\rspd=75\\ Merci bien madame.";
+                alSpeech.setVolume(0.65f);
+                alSpeech.say(messageToDisplay);
+                startTime = System.nanoTime()/100000;
+                merci_Toggle=0;
+            }
         }
     }
 
     public void on2Arms(View view) throws InterruptedException, CallError {
         if (running) {
-            //Function to lift 2 arms up, might use a pose.
+            startTime = System.nanoTime()/100000;
+            TextView myTextView = (TextView) findViewById(R.id.statustext);
+            myTextView.setText("CONNECTE : 2 ARMS");
+
         }
     }
 
@@ -282,6 +463,27 @@ public class MyActivity extends Activity {
             myTextView.setText("CONNECTE : REPOS");
             alMotion.rest();
             startTime = System.nanoTime()/100000;
+        }
+    }
+
+    private int handToggle = 0;
+
+    public void onHand(View view) throws InterruptedException, CallError {
+        if (running) {
+            if (handToggle==0) {
+                TextView myTextView = (TextView) findViewById(R.id.statustext);
+                myTextView.setText("CONNECTE : MAIN FERME");
+                alMotion.closeHand("RHand");
+                handToggle = 1;
+                startTime = System.nanoTime()/100000;
+            }
+            else {
+                TextView myTextView = (TextView) findViewById(R.id.statustext);
+                myTextView.setText("CONNECTE MAIN OUVERTE");
+                alMotion.openHand("RHand");
+                handToggle = 0;
+                startTime = System.nanoTime()/100000;
+            }
         }
     }
 
