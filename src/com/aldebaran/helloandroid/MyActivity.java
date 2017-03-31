@@ -198,6 +198,51 @@ public class MyActivity extends Activity {
         }
     }
 
+
+
+    //-----------------Présentation musée de la Civilisation---------------------//
+    public void onIntroduction(View view) throws InterruptedException, CallError {
+        if(running){
+            startTime = System.nanoTime()/100000;
+            TextView myTextView = (TextView) findViewById(R.id.statustext);
+            myTextView.setText("CONNECTE : INTRO");
+            alPosture.goToPosture("StandInit",0.5f);
+            String messageToDisplay = "\\rspd=80\\ ^mode(contextual) Mesdames et messieurs, je m'appelle Nao. \\pau=120\\Il me fait plaisir de vous souhaither la bienvenue à ce spectacle sur la robotique et l'intelligence artificielle!";
+            alSpeech.setVolume(0.75f);
+            alAnSpeech.say(messageToDisplay);
+        }
+    }
+
+    public void onAcceuil(View view) throws InterruptedException, CallError {
+        if(running){
+            startTime = System.nanoTime()/100000;
+            TextView myTextView = (TextView) findViewById(R.id.statustext);
+            myTextView.setText("CONNECTE : ACCEUIL");
+            String messageToDisplay = "\\rspd=85\\ ^mode(contextual) Veuillez acceuillir votre animateur, Joel Leblanc!";
+            alSpeech.setVolume(0.75f);
+            alAnSpeech.say(messageToDisplay);
+        }
+    }
+
+    public void onAssoirCollege(View view) throws InterruptedException, CallError {
+        if(running){
+            startTime = System.nanoTime()/100000;
+            TextView myTextView = (TextView) findViewById(R.id.statustext);
+            myTextView.setText("CONNECTE : INTRO");
+            alPosture.goToPosture("StandInit",0.5f);
+            String messageToDisplay = "\\rspd=70\\ ^mode(contextual) Je suis capable de m'assoir.";
+            alSpeech.setVolume(0.75f);
+            alAnSpeech.say(messageToDisplay);
+        }
+    }
+
+
+
+
+
+
+
+    //--------------------------Présentation de la JIQ----------------------------//
     public void onYou(View view) throws InterruptedException, CallError {
         if(running) {
             TextView myTextView = (TextView) findViewById(R.id.statustext);
@@ -215,8 +260,19 @@ public class MyActivity extends Activity {
         if(running) {
             TextView myTextView = (TextView) findViewById(R.id.statustext);
             myTextView.setText("CONNECTE : PETIT");
-            String messageToDisplay = "\\rspd=85\\Désolé,\\pau=450\\ j'ai juste de petites pattes";
-            alSpeech.setVolume(0.75f);
+            String messageToDisplay = "\\rspd=85\\Désolé,\\pau=450\\ j'ai juste de petites pattes.";
+            alSpeech.setVolume(1f);
+            alSpeech.say(messageToDisplay);
+            startTime = System.nanoTime()/100000;
+        }
+    }
+
+    public void onCertainement(View view) throws InterruptedException, CallError {
+        if(running) {
+            TextView myTextView = (TextView) findViewById(R.id.statustext);
+            myTextView.setText("CONNECTE : PETIT");
+            String messageToDisplay = "\\rspd=85\\Oui, certainement madame.";
+            alSpeech.setVolume(1f);
             alSpeech.say(messageToDisplay);
             startTime = System.nanoTime()/100000;
         }
@@ -228,7 +284,7 @@ public class MyActivity extends Activity {
             TextView myTextView = (TextView) findViewById(R.id.statustext);
             myTextView.setText("CONNECTE : ICI!");
             String messageToDisplay = "\\rspd=85\\J'arrive! J'arrive! \\pau=500\\Il n'y a pas le feu.";
-            alSpeech.setVolume(0.75f);
+            alSpeech.setVolume(1f);
             alSpeech.say(messageToDisplay);
             startTime = System.nanoTime()/100000;
         }
@@ -244,8 +300,8 @@ public class MyActivity extends Activity {
                 TextView myTextView = (TextView) findViewById(R.id.statustext);
                 myTextView.setText("CONNECTE : PRESENTE 0");
                 alPosture.goToPosture("Stand",0.85f);
-                String messageToDisplay = "^mode(contextual) \\rspd=85\\Désolé,\\pau=250\\mais pourrais-je me présenter?";
-                alSpeech.setVolume(0.75f);
+                String messageToDisplay = "^mode(contextual) \\rspd=85\\Pardon,\\pau=250\\mais pourrais-je me présenter?";
+                alSpeech.setVolume(1f);
                 alAnSpeech.say(messageToDisplay);
                 startTime = System.nanoTime()/100000;
                 presente_toggle++;
@@ -256,7 +312,7 @@ public class MyActivity extends Activity {
                 myTextView.setText("CONNECTE : PRESENTE 1");
                 alPosture.goToPosture("Stand",0.85f);
                 String messageToDisplay = "^mode(contextual) \\rspd=85\\Bonjour! Je m'appelle NAO. Je suis le meilleur robot au monde!\\pau=750\\ C'est mon programmeur qui dit ça!";
-                alSpeech.setVolume(0.75f);
+                alSpeech.setVolume(1f);
                 alAnSpeech.say(messageToDisplay);
                 startTime = System.nanoTime()/100000;
                 presente_toggle=0;
@@ -270,10 +326,9 @@ public class MyActivity extends Activity {
             startTime = System.nanoTime() / 100000;
             TextView myTextView = (TextView) findViewById(R.id.statustext);
             myTextView.setText("CONNECTE : ASSOIR");
-            alPosture.goToPosture("Stand", 0.85f);
-            String messageToDisplay = "^mode(contextual) \\rspd=85\\Je peux m'assoir.";
-            alSpeech.setVolume(0.75f);
-            alAnSpeech.say(messageToDisplay);
+            String messageToDisplay = "\\rspd=85\\Je peux m'assoir.";
+            alSpeech.setVolume(1f);
+            alSpeech.say(messageToDisplay);
             startTime = System.nanoTime() / 100000;
         }
     }
@@ -286,8 +341,8 @@ public class MyActivity extends Activity {
                 startTime = System.nanoTime()/100000;
                 TextView myTextView = (TextView) findViewById(R.id.statustext);
                 myTextView.setText("CONNECTE : TAICHI 1");
-                String messageToDisplay = "\\rspd=85\\Je pourrais faire du Taille-Chi, mais mes batteries sont trop faibles. Il faut que je me repose un peu";
-                alSpeech.setVolume(0.75f);
+                String messageToDisplay = "\\rspd=85\\Je pourrais faire du Taï-Chi, mais mes batteries sont trop faibles. Il faut que je me repose un peu";
+                alSpeech.setVolume(1f);
                 alSpeech.say(messageToDisplay);
                 startTime = System.nanoTime()/100000;
                 taichi_Toggle++;
@@ -297,7 +352,7 @@ public class MyActivity extends Activity {
                 TextView myTextView = (TextView) findViewById(R.id.statustext);
                 myTextView.setText("CONNECTE : TAICHI 2");
                 String messageToDisplay = "\\rspd=85\\Maintenant que je suis reposé, est-ce que je peux faire ma démonstration de taï-chi?";
-                alSpeech.setVolume(0.75f);
+                alSpeech.setVolume(1f);
                 alSpeech.say(messageToDisplay);
                 startTime = System.nanoTime()/100000;
                 taichi_Toggle++;
@@ -307,7 +362,7 @@ public class MyActivity extends Activity {
                 TextView myTextView = (TextView) findViewById(R.id.statustext);
                 myTextView.setText("CONNECTE : TAICHI 3");
                 String messageToDisplay = "\\rspd=85\\Super!";
-                alSpeech.setVolume(0.75f);
+                alSpeech.setVolume(1f);
                 alSpeech.say(messageToDisplay);
                 startTime = System.nanoTime()/100000;
                 taichi_Toggle=0;
@@ -321,7 +376,7 @@ public class MyActivity extends Activity {
             TextView myTextView = (TextView) findViewById(R.id.statustext);
             myTextView.setText("CONNECTE : DORS");
             String messageToDisplay = "\\rspd=75\\Fermez les lumières, je veux dormir.";
-            alSpeech.setVolume(0.75f);
+            alSpeech.setVolume(1f);
             alSpeech.say(messageToDisplay);
             startTime = System.nanoTime()/100000;
         }
@@ -333,7 +388,7 @@ public class MyActivity extends Activity {
             TextView myTextView = (TextView) findViewById(R.id.statustext);
             myTextView.setText("CONNECTE : REVE");
             String messageToDisplay = "\\rspd=75\\ Moi j'adore ça la réalité!.";
-            alSpeech.setVolume(0.65f);
+            alSpeech.setVolume(1f);
             alSpeech.say(messageToDisplay);
             startTime = System.nanoTime()/100000;
         }
@@ -344,8 +399,20 @@ public class MyActivity extends Activity {
             startTime = System.nanoTime()/100000;
             TextView myTextView = (TextView) findViewById(R.id.statustext);
             myTextView.setText("CONNECTE : REVE");
-            String messageToDisplay = "\\rspd=75\\ Je pense que j'ai dormi un peu et j'ai fait un beau rêve.";
-            alSpeech.setVolume(0.65f);
+            String messageToDisplay = "\\rspd=75\\ Je pense que j'ai dormi un peu \\pau=250\\ et j'ai fait un beau rêve.";
+            alSpeech.setVolume(1f);
+            alSpeech.say(messageToDisplay);
+            startTime = System.nanoTime()/100000;
+        }
+    }
+
+    public void onFinale(View view) throws InterruptedException, CallError {
+        if (running) {
+            startTime = System.nanoTime()/100000;
+            TextView myTextView = (TextView) findViewById(R.id.statustext);
+            myTextView.setText("CONNECTE : REVE");
+            String messageToDisplay = "\\rspd=85\\ Pardon madame, je fais de petits pas pour l'homme, mais de grands pas pour la robotique!";
+            alSpeech.setVolume(1f);
             alSpeech.say(messageToDisplay);
             startTime = System.nanoTime()/100000;
         }
@@ -362,27 +429,7 @@ public class MyActivity extends Activity {
         }
     }
 
-    public void onApprivoise(View view) throws InterruptedException, CallError {
-        if (running) {
-            startTime = System.nanoTime()/100000;
-            TextView myTextView = (TextView) findViewById(R.id.statustext);
-            myTextView.setText("CONNECTE : APPRIVOISE");
-            String messageToDisplay = "\\rspd=75\\ Je crois qu'elle m'a apprivoisé";
-            alSpeech.setVolume(0.65f);
-            alSpeech.say(messageToDisplay);
-            startTime = System.nanoTime()/100000;
-        }
-    }
 
-    public void on1Arm(View view) throws InterruptedException, CallError {
-        if(running) {
-            TextView myTextView = (TextView) findViewById(R.id.statustext);
-            myTextView.setText("CONNECTE : 1 ARM");
-            alMotion.setStiffnesses("RArm",0.5f);
-            alMotion.angleInterpolationWithSpeed("RShoulderPitch",-1.95,0.20f);
-            startTime = System.nanoTime()/100000;
-        }
-    }
 
     private int fake_Toggle=0;
 
@@ -420,7 +467,7 @@ public class MyActivity extends Activity {
                 TextView myTextView = (TextView) findViewById(R.id.statustext);
                 myTextView.setText("CONNECTE : MERCI 1");
                 String messageToDisplay = "\\rspd=80\\ C'est un beau compliment!\\pau=250\\Merci!";
-                alSpeech.setVolume(0.65f);
+                alSpeech.setVolume(1f);
                 alSpeech.say(messageToDisplay);
                 startTime = System.nanoTime()/100000;
                 merci_Toggle++;
@@ -430,7 +477,7 @@ public class MyActivity extends Activity {
                 TextView myTextView = (TextView) findViewById(R.id.statustext);
                 myTextView.setText("CONNECTE : MERCI 2");
                 String messageToDisplay = "\\rspd=75\\ Merci bien madame.";
-                alSpeech.setVolume(0.65f);
+                alSpeech.setVolume(1f);
                 alSpeech.say(messageToDisplay);
                 startTime = System.nanoTime()/100000;
                 merci_Toggle=0;
@@ -438,14 +485,6 @@ public class MyActivity extends Activity {
         }
     }
 
-    public void on2Arms(View view) throws InterruptedException, CallError {
-        if (running) {
-            startTime = System.nanoTime()/100000;
-            TextView myTextView = (TextView) findViewById(R.id.statustext);
-            myTextView.setText("CONNECTE : 2 ARMS");
-
-        }
-    }
 
     public void onWake(View view) throws InterruptedException, CallError {
         if(running) {
